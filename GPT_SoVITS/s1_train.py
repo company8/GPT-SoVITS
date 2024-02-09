@@ -20,7 +20,7 @@ from AR.utils.io import load_yaml_config
 
 logging.getLogger("numba").setLevel(logging.WARNING)
 logging.getLogger("matplotlib").setLevel(logging.WARNING)
-torch.set_float32_matmul_precision("high")
+torch.set_float32_matmul_precision("highest")
 from AR.utils import get_newest_ckpt
 
 from collections import OrderedDict
