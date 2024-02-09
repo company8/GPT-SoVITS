@@ -58,9 +58,9 @@ def execute_asr(input_folder, output_folder, model_size, language,precision):
         try:
             segments, info = model.transcribe(
                 audio          = file,
-                beam_size      = 5,
+                beam_size      = 20,
                 vad_filter     = True,
-                vad_parameters = dict(min_silence_duration_ms=700),
+                vad_parameters = dict(min_silence_duration_ms=500),
                 language       = language)
             text = ''
             for segment in segments:
@@ -86,7 +86,7 @@ if __name__ == '__main__':
     parser.add_argument("-l", "--language", type=str, default='ja',
                         choices=language_code_list,
                         help="Language of the audio files.")
-    parser.add_argument("-p", "--precision", type=str, default='float16', choices=['float16','float32'],
+    parser.add_argument("-p", "--precision", type=str, default='float32', choices=['float16','float32'],
                         help="fp16 or fp32")
 
     cmd = parser.parse_args()
