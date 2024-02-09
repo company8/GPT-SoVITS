@@ -4,7 +4,7 @@ gpu:
 io:
   text_path: D:\RVC1006\GPT-SoVITS\GPT_SoVITS
   save_every_n_epoch: 1
-  precision: 16-mixed
+  precision: 32
   gradient_clip: 1.0
 optimizer:
   lr: 0.01
