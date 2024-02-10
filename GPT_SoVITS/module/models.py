@@ -910,7 +910,7 @@ class SynthesizerTrn(nn.Module):
 
         if self.semantic_frame_rate == "25hz":
             quantized = F.interpolate(
-                quantized, size=int(quantized.shape[-1] * 2), mode="nearest"
+                quantized, size=int(quantized.shape[-1] * 2), mode="nearest-exact"
             )
 
         x, m_p, logs_p, y_mask = self.enc_p(
@@ -943,7 +943,7 @@ class SynthesizerTrn(nn.Module):
         quantized, codes, commit_loss, _ = self.quantizer(ssl, layers=[0])
         if self.semantic_frame_rate == "25hz":
             quantized = F.interpolate(
-                quantized, size=int(quantized.shape[-1] * 2), mode="nearest"
+                quantized, size=int(quantized.shape[-1] * 2), mode="nearest-exact"
             )
 
         x, m_p, logs_p, y_mask = self.enc_p(
@@ -970,7 +970,7 @@ class SynthesizerTrn(nn.Module):
         quantized = self.quantizer.decode(codes)
         if self.semantic_frame_rate == "25hz":
             quantized = F.interpolate(
-                quantized, size=int(quantized.shape[-1] * 2), mode="nearest"
+                quantized, size=int(quantized.shape[-1] * 2), mode="nearest-exact"
             )
 
         x, m_p, logs_p, y_mask = self.enc_p(
